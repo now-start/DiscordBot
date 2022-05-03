@@ -1,0 +1,22 @@
+#--jasypt.encryptor.password=password
+#argments = ENC(DFyt5Z2LL4A7u97GyRXO39BKQrjegsj8hYtGVogb4CFmIRUPDmk/C+GoNlVlEOCDRWSq37E+A63jS/Z2RYVBGKxJ8LYbSQw1K6GynF0to3A=)
+
+spring:
+  datasource:
+    url: ENC(BR3JNnosa7OvvSAr3ukFhhFlO5eKaPfARiTajHpHfygiOxPnA/nZqrT2nSJUaVR4KBSD4oYK+P4=)
+    username: ENC(0FHLkbs9VDSkNLJ6dpb32Q==)
+    password: ENC(8dsSaf1SQLLttlmvmyY8qA==)
+    driver-class-name: org.mariadb.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        #        show_sql: true
+        format_sql: true
+        default_batch_fetch_size: 1000 #최적화 옵션
+
+logging.level:
+  org.hibernate.SQL: debug
+#  org.hibernate.type: trace
