@@ -15,10 +15,6 @@ public class DiscordBotApplication {
     public static void main(String[] args) throws LoginException, InterruptedException {
         SpringApplication.run(DiscordBotApplication.class, args);
 
-        JDA jda = JDABuilder.createDefault(args[0])
-                .addEventListeners(new MessageListener())
-                .build();
-        jda.awaitReady();
     }
 
 }
