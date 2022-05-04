@@ -9,20 +9,18 @@ import net.dv8tion.jda.api.exceptions.PermissionException;
 import net.dv8tion.jda.api.exceptions.RateLimitedException;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.stereotype.Controller;
 
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Slf4j
+@Controller
 public class MessageListener extends ListenerAdapter {
 
     @Override
     public void onMessageReceived(@NotNull MessageReceivedEvent event) {
-        //These are provided with every event in JDA
-        JDA jda = event.getJDA();                       //JDA, the core of the api.
-        long responseNumber = event.getResponseNumber();//The amount of discord events that JDA has received since the last reconnect.
-
         //Event specific information
         User author = event.getAuthor();                //The user that sent the message
         Message message = event.getMessage();           //The message that was received.
@@ -31,10 +29,6 @@ public class MessageListener extends ListenerAdapter {
 
         String msg = message.getContentDisplay();              //This returns a human readable version of the Message. Similar to
         // what you would see in the client.
-
-        boolean bot = author.isBot();                    //This boolean is useful to determine if the User that
-        // sent the Message is a BOT or not!
-
         if (event.isFromType(ChannelType.TEXT))         //If this message was sent to a Guild TextChannel
         {
             //Because we now know that this message was sent in a Guild, we can do guild specific things
