@@ -1,5 +1,6 @@
 package com.example.discordbot.listener;
 
+import lombok.extern.slf4j.Slf4j;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.*;
@@ -13,12 +14,11 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
+@Slf4j
 public class MessageListener extends ListenerAdapter {
 
     @Override
     public void onMessageReceived(@NotNull MessageReceivedEvent event) {
-        super.onMessageReceived(event);
-
         //These are provided with every event in JDA
         JDA jda = event.getJDA();                       //JDA, the core of the api.
         long responseNumber = event.getResponseNumber();//The amount of discord events that JDA has received since the last reconnect.
@@ -53,7 +53,7 @@ public class MessageListener extends ListenerAdapter {
                 name = member.getEffectiveName();       //This will either use the Member's nickname if they have one,
             }                                           // otherwise it will default to their username. (User#getName())
 
-            System.out.printf("(%s)[%s]<%s>: %s\n", guild.getName(), textChannel.getName(), name, msg);
+            log.info("({}})[{}}]<{}>: {}", guild.getName(), textChannel.getName(), name, msg);
         } else if (event.isFromType(ChannelType.PRIVATE)) //If this message was sent to a PrivateChannel
         {
             //The message was sent in a PrivateChannel.

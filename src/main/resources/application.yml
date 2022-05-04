@@ -1,5 +1,5 @@
 #--jasypt.encryptor.password=password
-#argments = ENC(DFyt5Z2LL4A7u97GyRXO39BKQrjegsj8hYtGVogb4CFmIRUPDmk/C+GoNlVlEOCDRWSq37E+A63jS/Z2RYVBGKxJ8LYbSQw1K6GynF0to3A=)
+token: ENC(DFyt5Z2LL4A7u97GyRXO39BKQrjegsj8hYtGVogb4CFmIRUPDmk/C+GoNlVlEOCDRWSq37E+A63jS/Z2RYVBGKxJ8LYbSQw1K6GynF0to3A=)
 
 spring:
   datasource:
