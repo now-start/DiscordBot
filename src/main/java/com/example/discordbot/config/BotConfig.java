@@ -19,6 +19,7 @@ public class BotConfig {
     public void init() throws LoginException, InterruptedException {
         JDA jda = JDABuilder.createDefault(token)
                 .addEventListeners(new PingpongListener())
+                .addEventListeners(new HelpListener())
                 .build();
         jda.awaitReady();
     }
