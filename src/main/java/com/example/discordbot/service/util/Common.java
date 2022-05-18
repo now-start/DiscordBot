@@ -10,9 +10,6 @@ import java.util.Objects;
 @Slf4j
 public class Common {
 
-    private Common() {
-    }
-
     public static void logging(@NotNull MessageReceivedEvent event) {
         Guild guild = event.getGuild();
         TextChannel textChannel = event.getTextChannel();

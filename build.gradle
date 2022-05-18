@@ -20,7 +20,47 @@ repositories {
 }
 
 jacoco{
-    toolVersion = "0.8.5"
+    toolVersion = "0.8.7"
+
+    // 테스트 결과 리포트 저장 경로 설정
+    // default : "${project.reporting.baseDir}/jacoco"
+    //reportsDir = file("$buildDir/customJacocoReportDir")
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            // Jacoco Rule 활성화
+            enabled = true
+
+            // 룰 체크 단위
+            element = 'CLASS' // Option: BUNDLE(default), PACKAGE, CLASS, SOURCEFILE, METHOD
+
+            // Method 커버리지
+            limit {
+                counter = 'METHOD' // Option: INSTRUCTION(default), LINE, BRANCH, CLASS, METHOD, COMPLEXITY
+                value = 'COVEREDRATIO' // Option: COVEREDRATIO(default), TOTALCOUNT, MISSEDCOUNT, COVEREDCOUNT, MISSEDRATIO
+                minimum = 1.00
+            }
+
+            // Branch 커버리지
+            limit {
+                counter = 'BRANCH' // Option: INSTRUCTION(default), LINE, BRANCH, CLASS, METHOD, COMPLEXITY
+                value = 'COVEREDRATIO' // Option: COVEREDRATIO(default), TOTALCOUNT, MISSEDCOUNT, COVEREDCOUNT, MISSEDRATIO
+                minimum = 0.60
+            }
+
+            // 커버리지 체크 제외 클래스
+            excludes = [
+                    'com.example.discordbot.advice.*',
+                    'com.example.discordbot.config.*',
+                    'com.example.discordbot.data.*',
+                    'com.example.discordbot.exception.*',
+                    'com.example.discordbot.filter.*',
+                    'com.example.discordbot.interceptor.*',
+            ]
+        }
+    }
 }
 
 dependencies {
@@ -28,7 +68,7 @@ dependencies {
 
     // https://mvnrepository.com/artifact/net.dv8tion/JDA
     implementation 'net.dv8tion:JDA:5.0.0-alpha.11'
-    implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.3'
+    implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.4'
 
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'

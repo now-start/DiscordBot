@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class JasyptConfigTest {
 
     @Value("${jasypt.encryptor.password}")
-    private String password;
+    private String password = "2691";
 
     @Test
     public void jasyptTest() throws Exception {
